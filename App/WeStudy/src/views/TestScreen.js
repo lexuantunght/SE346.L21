@@ -113,7 +113,7 @@ export function TestScreen({navigation}) {
             <Text style = {{flex: 3, marginLeft: 5}}>{(new Date(item.date_done)).toLocaleDateString()}</Text>
             <Text style = {{flex: 2, marginLeft: 5}}>{item.mark}</Text>
             <TouchableOpacity style = {{flex: 2, marginLeft: 5, alignItems: 'center'}}
-            onPress = {() => navigation.navigate('ReviewTest', { testId: item.testId, subjectName: subjectReview.label })}>
+            onPress = {() => navigation.navigate('ReviewTest', { testId: item.testId, subjectName: subjects[subjects.findIndex(e => e.value == subjectReview)].label })}>
                 <Text style = {{color: colorConfig.accentColor, fontWeight: '600'}}>Xem</Text>
             </TouchableOpacity>
         </View>

@@ -13,5 +13,5 @@
 + NodeJS, MongoDB, Express
 - Cơ sở dữ liệu được trình bày trong file báo cáo
 # Tác giả
-+ Lê Xuân Tùng
-+ Nguyễn Xuân Tú
++ Lê Xuân Tùng - 18521616
++ Nguyễn Xuân Tú - 18521585
