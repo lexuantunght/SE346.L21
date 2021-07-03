@@ -24,6 +24,7 @@ export function RegisterScreen({onDismiss}) {
     return(
         <View style = {styles.container}>
             <SafeAreaView style = {styles.container}>
+            <KeyboardAvoidingView behavior={Platform.OS === 'ios'? 'padding': 'height'} style = {styles.body}>
                 <Loading loading = {loading}/>
                 <View style = {{height: 45, alignItems: 'center', flexDirection: 'row', paddingHorizontal: 20}}>
                     <TouchableOpacity style = {{flex: 1, flexDirection: 'row', alignItems: 'center'}} onPress = {() => onDismiss()}>
@@ -34,7 +35,6 @@ export function RegisterScreen({onDismiss}) {
                     <View style = {{flex: 1}}/>
                 </View>
                 <ScrollView style = {styles.container}>
-                    <KeyboardAvoidingView behavior={Platform.OS === 'ios'? 'padding': 'height'} style = {styles.body}>
                         <View style = {styles.inputContainer}>
                             <Image source = {require('../assets/name.png')} style = {styles.icon}/>
                             <TextInput style = {styles.input} placeholder = 'Họ tên' autoCorrect = {false} maxLength = {50} onChangeText = {text => setName(text)}/>
@@ -82,8 +82,8 @@ export function RegisterScreen({onDismiss}) {
                         }}>
                             <Text style = {{fontWeight: '700', fontSize: 17, color: '#fff', fontFamily: 'Nunito'}}>Đăng ký</Text>
                         </TouchableOpacity>
-                    </KeyboardAvoidingView>
                 </ScrollView>
+                </KeyboardAvoidingView>
             </SafeAreaView>
         </View>
     );
