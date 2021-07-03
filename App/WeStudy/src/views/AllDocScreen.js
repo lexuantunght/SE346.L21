@@ -2,7 +2,8 @@ import React, { useEffect, useState } from 'react';
 import {
     View, Text, FlatList, TouchableOpacity, Image, RefreshControl,
     StyleSheet, Dimensions, TouchableWithoutFeedback, Modal, TextInput,
-    SafeAreaView
+    SafeAreaView,
+    Platform
 } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { LoadingImage } from '../components/LoadingImage';
@@ -93,8 +94,8 @@ export function AllDocScreen({navigation}) {
     return(
         <View style = {styles.container}>
             <Loading loading = {loading}/>
-            <View style = {styles.filter}>
-                <View style = {{flex: 1}}>
+            <View style = {[styles.filter, Platform.OS !== "android" && {zIndex: 999999}]}>
+                <View style = {[{flex: 1}, Platform.OS !== "android" && {zIndex: 999999}]}>
                     <Text style = {styles.title}>Chọn môn học</Text>
                     {subjects.length > 0 ? <DropDownPicker items = {subjects} open={openSubject} setOpen={setOpenSubject} placeholder='Chọn môn'
                         containerStyle = {{height: 48}} value={selectedSubject} setValue={setSelectedSubject}
@@ -150,7 +151,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     filter: {
-        flexDirection: 'row', padding: 10, zIndex: 1000
+        flexDirection: 'row', padding: 10
     },
     myShadow: {
         shadowColor: "#000",

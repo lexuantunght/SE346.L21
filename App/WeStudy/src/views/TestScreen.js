@@ -161,9 +161,8 @@ export function TestScreen({navigation}) {
                 <View style={{height: 10}}/>
                 <DropDownPicker listMode='SCROLLVIEW' open={openCode} disabled={tests.length == 0} setOpen={setOpenCode} items = {tests} placeholder='Chọn mã đề'
                     containerStyle = {{height: 48}} value = {selectedTest} setValue={setSelectedTest}
-                    itemStyle = {{justifyContent: 'flex-start'}} style = {[styles.border]}
+                    itemStyle = {{justifyContent: 'flex-start'}} style = {[styles.border, {opacity: tests.length == 0 ? 0.5 : 1}]}
                     dropDownContainerStyle = {[{borderBottomLeftRadius: 15, borderBottomRightRadius: 15, borderColor: myColor.accentColor}]}
-                    disabledStyle={{opacity: 0.5}}
                     zIndex={2000} zIndexInverse={2000}/>
                 <View style = {[styles.card, styles.myShadow]}>
                     <Text style = {styles.cardTitle}>Thẻ dự thi thử</Text>

@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import {
     View, Text, FlatList, TouchableOpacity, Image, Modal, TextInput,
     StyleSheet, Dimensions, TouchableWithoutFeedback, RefreshControl,
-    SafeAreaView
+    SafeAreaView,
+    Platform
 } from 'react-native';
 import DropDownPicker from 'react-native-dropdown-picker';
 import { LoadingImage } from '../components/LoadingImage';
@@ -104,8 +105,8 @@ export function AllTestScreen({navigation}) {
     return(
         <View style = {styles.container}>
             <Loading loading = {loading}/>
-            <View style = {styles.filter}>
-                <View style = {{flex: 2, marginRight: 10}}>
+            <View style = {[styles.filter, Platform.OS !== "android" && {zIndex: 999999}]}>
+                <View style = {[{flex: 2, marginRight: 10}, Platform.OS !== "android" && {zIndex: 999999}]}>
                     <Text style = {styles.title}>Chọn môn học</Text>
                     {subjects.length > 0 ? <DropDownPicker items = {subjects} open={openSubject} setOpen={setOpenSubject} placeholder='Chọn môn'
                         containerStyle = {{height: 48}} value={selectedSubject} setValue={setSelectedSubject}
@@ -114,7 +115,7 @@ export function AllTestScreen({navigation}) {
                         />
                     : null}
                 </View>
-                <View style = {{flex: 3}}>
+                <View style = {[{flex: 3}, Platform.OS !== "android" && {zIndex: 999999}]}>
                     <Text style = {styles.title}>Chọn Đơn vị Giáo Dục</Text>
                     {departmentEducations.length > 0 ? <DropDownPicker items = {departmentEducations} open={openDepartmentEducation} setOpen={setOpenDepartmentEducation} placeholder='Chọn đơn vị'
                         containerStyle = {{height: 48}} value={selectedDE} setValue={setSelectedDE}
@@ -170,7 +171,7 @@ const styles = StyleSheet.create({
         flex: 1
     },
     filter: {
-        flexDirection: 'row', padding: 10, zIndex: 1000
+        flexDirection: 'row', padding: 10
     },
     myShadow: {
         shadowColor: "#000",

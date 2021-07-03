@@ -84,9 +84,8 @@ function BaseMarkTab() {
                 { years.length > 0 ?
                 <DropDownPicker open={openYear} disabled={selectedUniversity == null} setOpen={setOpenYear} items = {years} placeholder = 'Chọn năm'
                     containerStyle = {{height: 48}} value={selectedYear} setValue={setSelectedYear}
-                    itemStyle = {{justifyContent: 'flex-start'}} style = {[styles.border]}
+                    itemStyle = {{justifyContent: 'flex-start'}} style = {[styles.border, { opacity: selectedUniversity == null ? 0.5 : 1 }]}
                     dropDownContainerStyle = {[{borderBottomLeftRadius: 15, borderBottomRightRadius: 15, borderColor: colorConfig.accentColor}]}
-                    disabledStyle={{opacity: 0.5}}
                     onChangeValue = {value => {
                         findResult(selectedUniversity, value);
                     }}
